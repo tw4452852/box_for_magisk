@@ -150,10 +150,10 @@ dns:
 
   # 指定域名查询的解析服务器，可使用 geosite, 优先于 nameserver/fallback 查询
   # Note: 并发查询，无法保证顺序，以下仅作为书写演示，建议根据自己需求写
-  # nameserver-policy:
-    # 'www.baidu.com': '114.114.114.114'
-    # '+.internal.crop.com': '10.0.0.1'
-    # 'geosite:cn': https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
 
   # 后备域名解析服务器，一般情况下使用境外 DNS, 保证结果可信
   # 配置 fallback后默认启用 fallback-filter,geoip-code为 cn
@@ -208,7 +208,7 @@ dns:
 proxies:
 proxy-groups:
 
-  - name: "PROXY"
+  - name: "Proxy"
     type: select
     use:
       - "provide"
